@@ -52,8 +52,6 @@ module "alb" {
 
   name            = "blog-alb"
 
-  load_balancer_type = "applicaton"
-
   vpc_id          = "module.blog_vpc.vpc_id"
   subnets         = module.blog_vpc.public_subnets
 
