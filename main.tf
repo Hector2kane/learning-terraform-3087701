@@ -50,8 +50,7 @@ resource "aws_instance" "blog" {
 module "autoscaling" {
   source  = "terraform-aws-modules/autoscaling/aws"
   version = "8.0.0"
-  # insert the 1 required variable here
-
+  
   name     = "blog"
   min_size = 1
   max_size = 2
@@ -60,11 +59,13 @@ module "autoscaling" {
 module "alb" {
   source = "terraform-aws-modules/alb/aws"
 
-  name            = "blog-alb"
+  name               = "blog-alb"
 
-  vpc_id          = "module.blog_vpc.vpc_id"
-  subnets         = module.blog_vpc.public_subnets
-  security_groups = [module.blog_sg.vpc_security_group_id]
+  load_balancer_type = "application"
+
+  vpc_id             = module.blog_vpc.vpc_id
+  subnets            = module.blog_vpc.public_subnets
+  security_groups    = [module.blog_sg.security_group_id]
 
   # Security Group
   security_group_ingress_rules = {
