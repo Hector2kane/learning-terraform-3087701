@@ -16,7 +16,7 @@ variable "ami_filter"{
   }
 }
 
-variable "environment"
+variable "environment" {
   description = "Development Environment"
 
   type = object({
@@ -27,7 +27,7 @@ variable "environment"
   default = {
   name = "dev"
   network_prefix = "10.0"
-
+  }
 }
 
 variable "asg_min_size" {
