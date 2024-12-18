@@ -8,7 +8,7 @@ variable "ami_filter" {
   type    = map(string)
     name  = string
     owner = string
-    })
+    }
   default = {
     values  = "bitnami-tomcat-*-x86_64-hvm-ebs-nami"
     owner   = "979382823631" # Bitnami
